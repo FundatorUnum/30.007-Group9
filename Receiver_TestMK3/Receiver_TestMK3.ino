@@ -27,7 +27,6 @@ Thx!
 //int LR = 0;
 //int LP = 0;
 
-int LEDCount = 5;
 //int InArray[5] = {LT,LI,LM,LR,LP};
 int ReceivedMessage[3] = {0,0,0}; // Used to store value received by the NRF24L01
 
@@ -40,7 +39,7 @@ void setup(void){
 Serial.begin(9600);
 radio.begin(); // Start the NRF24L01
 
-radio.openReadingPipe(3,pipe); // Get NRF24L01 ready to receive
+radio.openReadingPipe(0,pipe); // Get NRF24L01 ready to receive
 
 radio.startListening(); // Listen to see if information received
 
@@ -62,9 +61,9 @@ void loop(void){
 while (radio.available())
 {
 
-radio.read(&ReceivedMessage, sizeof(ReceivedMessage)); // Read information from the NRF24L01
+radio.read(ReceivedMessage, sizeof(ReceivedMessage)); // Read information from the NRF24L01
 
-Serial.write(ReceivedMessage[0]);
+//Serial.write(ReceivedMessage[0]);
 
 if (ReceivedMessage[0] == 1) // Indicates switch is pressed
 {
