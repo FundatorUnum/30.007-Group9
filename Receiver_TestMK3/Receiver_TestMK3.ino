@@ -62,14 +62,34 @@ void loop(void){
 while (radio.available())
 {
 
-radio.read(ReceivedMessage, 1); // Read information from the NRF24L01
-Serial.print(ReceivedMessage)
+radio.read(&ReceivedMessage, sizeof(ReceivedMessage)); // Read information from the NRF24L01
 
+Serial.write(ReceivedMessage[0]);
 
-for (int thisLED = 0; thisLED < 3; thisLED++) { // Indicates switch is pressed
-  digitalWrite(ReceivedMessage[thisLED], HIGH);
+if (ReceivedMessage[0] == 1) // Indicates switch is pressed
+{
+digitalWrite(LED_PIN1, HIGH);
 }
-
+else
+{
+digitalWrite(LED_PIN1, LOW);
+}
+if (ReceivedMessage[1] == 1) // Indicates switch is pressed
+{
+digitalWrite(LED_PIN2, HIGH);
+}
+else
+{
+digitalWrite(LED_PIN2, LOW);
+}
+if (ReceivedMessage[2] == 1) // Indicates switch is pressed
+{
+digitalWrite(LED_PIN3, HIGH);
+}
+else
+{
+digitalWrite(LED_PIN3, LOW);
+}
 delay(10);
 }
 }

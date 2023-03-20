@@ -22,9 +22,9 @@ Thx!
 int LT = 0;
 int LI = 0;
 int LM = 0;
-//int LR = 0;
-//int LP = 0;
-//int OutArray[5] = {LT,LI,LM,LR,LP};
+int LR = 0;
+int LP = 0;
+int OutArray[5] = {LT,LI,LM,LR,LP};
 int SentMessage[3] = {0,0,0}; // Used to store value before being sent through the NRF24L01
 
 RF24 radio(7,8); // NRF24L01 used SPI pins + Pin 9 and 10 on the NANO
@@ -81,5 +81,5 @@ SentMessage[2] = 0;
 //LP = 1;
 //Serial.write("Button 5 Pressed\n");
 
-radio.write(SentMessage, 1); // Send value through NRF24L01
+radio.write(SentMessage, sizeof(SentMessage)); // Send value through NRF24L01
 }
