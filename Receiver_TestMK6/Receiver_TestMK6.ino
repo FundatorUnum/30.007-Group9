@@ -131,7 +131,7 @@ if (ReceivedMessage[1] < 10) {
   } else {
     Serial.println(" - Big squeeze\n");
   }
-delay(10);
+delay(500);
 }
 }
 }
